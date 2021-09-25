@@ -9,13 +9,13 @@ variable "gke_password" {
 }
 
 variable "gke_num_nodes" {
-  default     = 3
+  default     = 1
   description = "number of gke nodes"
 }
 
 # GKE cluster
 resource "google_container_cluster" "primary" {
-  name     = "gke-${var.project_id}"
+  name     = "${var.project_id}-gke"
   location = var.region
   remove_default_node_pool = true
   initial_node_count       = 1
